@@ -1,4 +1,4 @@
-token: "bronotokenhere"                   # Lichess OAuth2 Token.
+token: "NotHere"                   # Lichess OAuth2 Token.
 url: "https://lichess.org/"        # Lichess base URL.
 
 engine:                            # Engine settings.
@@ -29,7 +29,7 @@ engine:                            # Engine settings.
     resign_score: -1000            # If the score is less than or equal to this value, the bot resigns (in cp).
     resign_for_egtb_minus_two: true # If true the bot will resign in positions where the online_egtb returns a wdl of -2.
     resign_moves: 3                # How many moves in a row the score has to be below the resign value.
-    offer_draw_enabled: true      # Whether or not the bot should offer/accept draw.
+    offer_draw_enabled: false      # Whether or not the bot should offer/accept draw.
     offer_draw_score: 0            # If the absolute value of the score is less than or equal to this value, the bot offers/accepts draw (in cp).
     offer_draw_for_egtb_zero: false # If true the bot will offer/accept draw in positions where the online_egtb returns a wdl of 0.
     offer_draw_moves: 10           # How many moves in a row the absolute value of the score has to be below the draw value.
@@ -111,10 +111,10 @@ engine:                            # Engine settings.
 
   silence_stderr: false            # Some engines (yes you, Leela) are very noisy.
 
-abort_time: 40                     # Time to abort a game in seconds when there is no activity.
+abort_time: 30                     # Time to abort a game in seconds when there is no activity.
 fake_think_time: false             # Artificially slow down the bot to pretend like it's thinking.
 rate_limiting_delay: 0             # Time (in ms) to delay after sending a move to prevent "Too Many Requests" errors.
-move_overhead: 5000                # Increase if your bot flags games too often.
+move_overhead: 2000                # Increase if your bot flags games too often.
 max_takebacks_accepted: 10         # The number of times to allow an opponent to take back a move in a game.
 quit_after_all_games_finish: false # If set to true, then pressing Ctrl-C to quit will only stop lichess-bot after all current games have finished.
 
@@ -130,7 +130,7 @@ challenge:                         # Incoming challenges.
   accept_bot: true                 # Accepts challenges coming from other bots.
   only_bot: false                  # Accept challenges by bots only.
   max_increment: 1               # Maximum amount of increment to accept a challenge in seconds. The max is 180. Set to 0 for no increment.
-  min_increment: 1                 # Minimum amount of increment to accept a challenge in seconds.
+  min_increment: 0                 # Minimum amount of increment to accept a challenge in seconds.
   max_base: 180                  # Maximum amount of base time to accept a challenge in seconds. The max is 10800 (3 hours).
   min_base: 0                      # Minimum amount of base time to accept a challenge in seconds.
   #max_days: 14                    # Maximum number of days per move to accept a challenge for a correspondence game.
@@ -139,21 +139,21 @@ challenge:                         # Incoming challenges.
   variants:                        # Chess variants to accept (https://lichess.org/variant).
     - standard
     - fromPosition
-    - antichess
-    - atomic
-    - chess960
-    - crazyhouse
-    - horde
-    - kingOfTheHill
-    - racingKings
-    - threeCheck
+    #- antichess
+    #- atomic
+    #- chess960
+    #- crazyhouse
+    #- horde
+    #- kingOfTheHill
+    #- racingKings
+    #- threeCheck
   time_controls:                   # Time controls to accept (bots are not allowed to play ultraBullet).
     - bullet
     - blitz
     - rapid
     - classical
-    - correspondence
-    - unlimited
+    #- correspondence
+    #- unlimited
   modes:                           # Game modes to accept.
     - casual                       # Unrated games.
     - rated                        # Rated games - must comment if the engine doesn't try to win.
@@ -169,7 +169,7 @@ challenge:                         # Incoming challenges.
 #   - PetersBot
 # recent_bot_challenge_age: 60     # Maximum age of a bot challenge to be considered recent in seconds
 # max_recent_bot_challenges: 2     # Maximum number of recent challenges that can be accepted from the same bot
-  bullet_requires_increment: True # Require that bullet game challenges from bots have a non-zero increment
+  bullet_requires_increment: False # Require that bullet game challenges from bots have a non-zero increment
 
 greeting:
   # Optional substitution keywords (include curly braces):
@@ -202,7 +202,7 @@ matchmaking:
 #  challenge_days:                 # Days for correspondence challenge (to be chosen at random).
 #    - 1
 #    - 2
-  opponent_min_rating: 600         # Opponents rating should be above this value (600 is the minimum rating in lichess).
+  opponent_min_rating: 3000         # Opponents rating should be above this value (600 is the minimum rating in lichess).
   opponent_max_rating: 4000        # Opponents rating should be below this value (4000 is the maximum rating in lichess).
   opponent_rating_difference: 300  # The maximum difference in rating between the bot's rating and opponent's rating.
   rating_preference: "high"        # One of "none", "high", "low".
@@ -210,7 +210,10 @@ matchmaking:
   challenge_mode: "casual"         # Set it to the mode in which challenges are sent. Possible options are 'casual', 'rated' and 'random'.
   challenge_filter: none           # If a bot declines a challenge, do not issue a similar challenge to that bot. Possible options are 'none', 'coarse', and 'fine'.
   block_list:                      # The list of bots that will not be challenged
-    
+    - TheMatrix2029
+    - ToromBot
+    - Nikitosik-ai
+    - Nikitosikbot_v2
 # overrides:                       # List of overrides for the matchmaking specifications above. When a challenge is created, either the default specification above or one of the overrides will be randomly chosen.
 #   bullet_only_horde:             # Name of the override. Can be anything as long as each override has a unique name ("bullet_only_horde" and "easy_chess960" in these examples).
 #     challenge_variant: "horde"   # List of options to override. Only the options mentioned will change when making the challenge. The rest will follow the default matchmaking options above.
