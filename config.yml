@@ -221,12 +221,12 @@ matchmaking:
 #       - 0
 #       - 1
 #
-#   easy_chess960:
-#     challenge_variant: "chess960"
-#     opponent_min_rating: 400
-#     opponent_max_rating: 1200
-#     opponent_rating_difference:
-#     challenge_mode: casual
+    easy_chess960:
+      challenge_variant: "chess960"
+      opponent_min_rating: 400
+      opponent_max_rating: 1200
+      opponent_rating_difference:
+      challenge_mode: rated
 #
 #   no_pressure_correspondence:
 #     challenge_initial_time:
